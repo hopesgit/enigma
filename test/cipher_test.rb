@@ -14,6 +14,6 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_get_a_random_base_key
-    assert_equal 5, @cipher.get_key.count
+    assert_equal 5, @cipher.get_key.length
   end
 end

@@ -9,6 +9,6 @@ class Cipher
   end
 
   def get_key
-    Calculator.get_key
+    Calculator.new.get_key
   end
 end
