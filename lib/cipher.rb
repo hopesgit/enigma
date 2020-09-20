@@ -34,4 +34,12 @@ class Cipher
     square = @calculator.square_it(get_date)
     square.to_s[-4..-1]
   end
+
+  def get_offsets
+    offset_base = get_date_square
+    @a = (a + offset_base[0].to_i) % 27
+    @b = (b + offset_base[1].to_i) % 27
+    @c = (c + offset_base[2].to_i) % 27
+    @d = (d + offset_base[3].to_i) % 27
+  end
 end

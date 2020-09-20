@@ -46,7 +46,7 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_use_date_to_offset_keys
-    Date.stubs(:today).returns(Date.new(2020,9,20))
+    Cipher.stubs(:get_date_square).returns("6400")
 
     @cipher.calculator.stubs(:get_key).returns("01234")
     @cipher.get_key
@@ -59,7 +59,7 @@ class CipherTest < Minitest::Test
     @cipher.get_offsets
 
     assert_equal 7, @cipher.a
-    assert_eqaul 16, @cipher.b
+    assert_equal 16, @cipher.b
     assert_equal 23, @cipher.c
     assert_equal 7, @cipher.d
   end
