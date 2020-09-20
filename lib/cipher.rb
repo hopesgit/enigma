@@ -1,3 +1,5 @@
+require "date"
+
 class Cipher
   attr_reader :calculator, :a, :b, :c, :d
 
@@ -12,7 +14,7 @@ class Cipher
   end
 
   def text
-    @text.downcase.split(//)
+    @text.downcase.split("")
   end
 
   def get_key
@@ -22,5 +24,9 @@ class Cipher
     @c = base[2..3].to_i
     @d = base[3..4].to_i
     base
+  end
+
+  def get_date
+    Date.today.strftime("%d%m%y").to_i
   end
 end

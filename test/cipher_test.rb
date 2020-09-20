@@ -31,4 +31,29 @@ class CipherTest < Minitest::Test
     assert_equal 23, @cipher.c
     assert_equal 34, @cipher.d
   end
+
+  def test_it_can_get_date
+    Date.stubs(:today).returns(Date.new(2020,9,20))
+
+    assert_equal 200920, @cipher.get_date
+  end
+
+  def test_it_can_use_date_to_offset_keys
+    Date.stubs(:today).returns(Date.new(2020,9,20))
+
+    @cipher.calculator.stubs(:get_key).returns("01234")
+    @cipher.get_key
+
+    assert_equal 1, @cipher.a
+    assert_equal 12, @cipher.b
+    assert_equal 23, @cipher.c
+    assert_equal 34, @cipher.d
+
+    @cipher.get_offsets
+
+    assert_equal 7, @cipher.a
+    assert_eqaul 16, @cipher.b
+    assert_equal 23, @cipher.c
+    assert_equal 7, @cipher.d
+  end
 end
