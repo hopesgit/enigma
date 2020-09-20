@@ -38,6 +38,13 @@ class CipherTest < Minitest::Test
     assert_equal 200920, @cipher.get_date
   end
 
+  def test_it_can_grab_square
+    Date.stubs(:today).returns(Date.new(2020,9,20))
+    @cipher.get_date
+
+    assert_equal "6400", @cipher.get_date_square
+  end
+
   def test_it_can_use_date_to_offset_keys
     Date.stubs(:today).returns(Date.new(2020,9,20))
 

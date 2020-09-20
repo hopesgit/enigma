@@ -29,4 +29,9 @@ class Cipher
   def get_date
     Date.today.strftime("%d%m%y").to_i
   end
+
+  def get_date_square
+    square = @calculator.square_it(get_date)
+    square.to_s[-4..-1]
+  end
 end
