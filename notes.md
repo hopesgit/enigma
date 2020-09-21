@@ -51,6 +51,8 @@
 
   * not sure how to do decryption yet
     * need date of transmission and key
+  * cracking:
+    * need date of transmission
   * need to be able to generate number keys with leading zeros (ex: 01111)
   * probably want to create a hash or file with values relating to alphabet placement
   * characters not within placement set do not get translated (ex: !)
