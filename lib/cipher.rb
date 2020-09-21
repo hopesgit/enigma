@@ -42,4 +42,8 @@ class Cipher
     @c = (c + offset_base[2].to_i) % 27
     @d = (d + offset_base[3].to_i) % 27
   end
+
+  def encipher
+    # create method in Translator class that takes an array (text), 4 different key arguments, and transscribes based on that
+  end
 end

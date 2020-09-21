@@ -63,4 +63,13 @@ class CipherTest < Minitest::Test
     assert_equal 23, @cipher.c
     assert_equal 7, @cipher.d
   end
+
+  def test_it_can_translate_the_given_text
+    Cipher.stubs(:get_date_square).returns("6400")
+    @cipher.calculator.stubs(:get_key).returns("01234")
+    @cipher.get_key
+    @cipher.get_offsets
+
+    assert_equal "zqiwsu", @cipher.encipher
+  end
 end
