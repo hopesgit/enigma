@@ -13,4 +13,8 @@ class TranslatorTest < Minitest::Test
     assert_equal ["a", "b", "c", "d", "e"], @translator.input_text
     assert_nil @translator.output_text
   end
+
+  def test_it_can_transform_text
+    assert_equal "gaymj", @translator.encipher(5, 26, 22, 9)
+  end
 end
