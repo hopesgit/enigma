@@ -44,6 +44,8 @@ class Cipher
   end
 
   def encipher
+    caesar = Translator.new(text)
+    caesar.encipher(@a, @b, @c, @d)
     # create method in Translator class that takes an array (text), 4 different key arguments, and transscribes based on that
   end
 end
