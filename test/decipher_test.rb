@@ -8,4 +8,9 @@ class DecipherTest < Minitest::Test
   def test_it_is_a_decipherer
     assert_instance_of Decipher, @decrypto
   end
+
+  def test_it_can_decrypt_messages
+    @decrypto.process
+    assert_equal "hello world", @decrypto.final_text 
+  end
 end
