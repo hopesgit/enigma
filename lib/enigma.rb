@@ -12,4 +12,6 @@ class Enigma
     decrypto.process
     Hash[:decryption => decrypto.final_text, :key => decrypto.key, :date => decrypto.date.to_s]
   end
+
+  def self.encrypt_file
 end
