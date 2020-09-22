@@ -37,17 +37,4 @@ class Translator
       end
     end
   end
-  # def encipher(a, b, c, d)
-  #   heck = @input_text.map do |char|
-  #     if alphabet.include?(char)
-  #       index = alphabet.find_index(char)
-  #       alphabet[(index + choose(char, a, b, c, d)) % 27]
-  #     else
-  #       char
-  #     end
-  #   end
-  #
-  #   heck.join
-  # end
-  #
 end
