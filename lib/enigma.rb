@@ -2,6 +2,7 @@ require "date"
 require "./lib/cipher"
 require "./lib/calculator"
 require "./lib/translator"
+require "./lib/decipher"
 
 class Enigma
   def encrypt(message, key = "random", date = "today")
@@ -21,6 +22,14 @@ class Enigma
     engine = self.new.encrypt(file.read)
     encrypted_file = File.open(filename2, "w")
     encrypted_file.write(engine[:encryption])
+    print "Created #{filename2} with the key #{engine[:key]} and date #{engine[:date]}"
+  end
+
+  def self.decrypt_file(filename1, filename2, key, date)
+    file = File.open(filename1, "r")
+    engine = self.new.decrypt(file.read, key, date)
+    decrypted_file = File.open(filename2, "w")
+    decrypted_file.write(engine[:decryption])
     print "Created #{filename2} with the key #{engine[:key]} and date #{engine[:date]}"
   end
 end
