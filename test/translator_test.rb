@@ -16,6 +16,13 @@ class TranslatorTest < Minitest::Test
     assert_nil @translator.output_text
   end
 
+  def test_it_has_alphabet
+    assert_equal 27, @translator.alphabet.count
+    assert @translator.alphabet.include?(" ")
+    assert @translator2.alphabet.include?("z")
+    assert @translator3.alphabet.include?("w")
+  end
+
   def test_it_can_transform_text
     assert_equal "faymj", @translator.encipher(5, 26, 22, 9)
   end
