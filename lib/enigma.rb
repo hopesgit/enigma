@@ -13,5 +13,8 @@ class Enigma
     Hash[:decryption => decrypto.final_text, :key => decrypto.key, :date => decrypto.date.to_s]
   end
 
-  def self.encrypt_file
+  def self.encrypt_file(filename1, filename2, key = "random", date = "today")
+    file = File.read(filename1, "r")
+    engine = self.new.encrypt(file, key = "random", date = "today")
+  end
 end
