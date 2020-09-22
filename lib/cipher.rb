@@ -1,17 +1,17 @@
 require "date"
 
 class Cipher
-  attr_reader :calculator, :a, :b, :c, :d, :final_text
+  attr_reader :calculator, :key, :date, :a, :b, :c, :d, :final_text
 
   def initialize(text, key = "random", date = "today")
     @text = text
     @calculator = Calculator.new
-    @key = get_key(key)
-    @date = get_date(date)
     @a = nil
     @b = nil
     @c = nil
     @d = nil
+    @key = get_key(key)
+    @date = get_date(date)
     @final_text = nil
   end
 
@@ -39,14 +39,14 @@ class Cipher
 
   def get_date(date)
     if date == "today"
-      Date.today.strftime("%d%m%y").to_i
+      Date.today.strftime("%d%m%y")
     else
-      date.to_i
+      date
     end
   end
 
   def get_date_square
-    square = @calculator.square_it(@date)
+    square = @calculator.square_it(@date.to_i)
     square.to_s[-4..-1]
   end
 

@@ -19,11 +19,6 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_get_keys_from_random_base
-    assert_nil @cipher.a
-    assert_nil @cipher.b
-    assert_nil @cipher.c
-    assert_nil @cipher.d
-
     @cipher.calculator.stubs(:get_key).returns("01234")
     @cipher.get_key("random")
 
@@ -34,11 +29,6 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_get_keys_from_given_base
-    assert_nil @cipher.a
-    assert_nil @cipher.b
-    assert_nil @cipher.c
-    assert_nil @cipher.d
-
     @cipher.get_key("51369")
 
     assert_equal 51, @cipher.a
@@ -50,8 +40,8 @@ class CipherTest < Minitest::Test
   def test_it_can_get_todays_date
     Date.stubs(:today).returns(Date.new(2020,9,20))
 
-    assert_equal 200920, @cipher.get_date("today")
-    assert_equal 200100, @cipher.get_date("200100")
+    assert_equal "200920", @cipher.get_date("today")
+    assert_equal "200100", @cipher.get_date("200100")
   end
 
   def test_it_can_grab_square
@@ -88,5 +78,8 @@ class CipherTest < Minitest::Test
     @cipher.encipher
 
     assert_equal "zqiwsu", @cipher.final_text
+  end
+
+  def test_whole_process
   end
 end
