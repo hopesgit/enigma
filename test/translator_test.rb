@@ -4,6 +4,7 @@ class TranslatorTest < Minitest::Test
   def setup
     @translator = Translator.new(["a", "b", "c", "d", "e"])
     @translator2 = Translator.new(["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"])
+    @translator3 = Translator.new(["t", "e", "s", "t", " ", "/", " ", "i", "n", "g"])
   end
 
   def test_it_is_translator
@@ -21,5 +22,9 @@ class TranslatorTest < Minitest::Test
 
   def test_it_can_transform_more_complicated_text
     assert_equal "keder ohulw", @translator2.encipher(3, 0, 19, 20)
+  end
+
+  def test_it_can_handle_non_alpha_characters
+    assert_equal "cjeoj/mdxl", @translator3.encipher(10, 5, 13, 22)
   end
 end
