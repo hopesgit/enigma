@@ -22,4 +22,6 @@ for example:
 
 ```ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818 ```
 
+Hint: running the ```encrypt.rb``` file first will encrypt the contents of the ```message.txt``` file and provide the key used and the date! Use those to decipher the content of the resulting file using the ```decrypt.rb``` file!
+
 That should get you going! Thank you for checking out my repo!
