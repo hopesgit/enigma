@@ -4,6 +4,6 @@ module Encodable
   end
 
   def alphabet
-    ["a".."z"] << " "
+    ("a".."z").to_a << " "
   end
 end

@@ -57,3 +57,4 @@
   * probably want to create a hash or file with values relating to alphabet placement
   * characters not within placement set do not get translated (ex: !)
   * maybe make shift_key classes?
+  * need to make sure that cipher/decipher are called from command line and 
