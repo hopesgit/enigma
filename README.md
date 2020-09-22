@@ -1,5 +1,6 @@
 # Enigma
 ## Group Members: Hope Gochnour
+## Turing School Mod 1 Project
 
 ### What is this?
 Welcome to my Enigma project! This is a tool that can encrypt your messages or decrypt messages sent to you! It's a bit of a complicated project and the uses are a bit strange, so allow me to explain them here.
