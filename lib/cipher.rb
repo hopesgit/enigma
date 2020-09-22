@@ -1,7 +1,7 @@
 require "date"
 
 class Cipher
-  attr_reader :calculator, :a, :b, :c, :d
+  attr_reader :calculator, :a, :b, :c, :d, :final_text
 
   def initialize(text, key = "random", date = "today")
     @text = text
@@ -12,6 +12,7 @@ class Cipher
     @b = nil
     @c = nil
     @d = nil
+    @final_text = nil
   end
 
   def text
@@ -59,11 +60,12 @@ class Cipher
 
   def encipher
     caesar = Translator.new(text)
-    caesar.encipher(@a, @b, @c, @d)
+    @final_text = caesar.encipher(@a, @b, @c, @d)
   end
 
   def process
     get_offsets
     encipher
+    final_text
   end
 end

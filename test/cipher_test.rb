@@ -47,15 +47,16 @@ class CipherTest < Minitest::Test
     assert_equal 69, @cipher.d
   end
 
-  def test_it_can_get_date
+  def test_it_can_get_todays_date
     Date.stubs(:today).returns(Date.new(2020,9,20))
 
-    assert_equal 200920, @cipher.get_date
+    assert_equal 200920, @cipher.get_date("today")
+    assert_equal 200100, @cipher.get_date("200100")
   end
 
   def test_it_can_grab_square
     Date.stubs(:today).returns(Date.new(2020,9,20))
-    @cipher.get_date
+    @cipher.get_date("today")
 
     assert_equal "6400", @cipher.get_date_square
   end
@@ -64,7 +65,7 @@ class CipherTest < Minitest::Test
     Cipher.stubs(:get_date_square).returns("6400")
 
     @cipher.calculator.stubs(:get_key).returns("01234")
-    @cipher.get_key
+    @cipher.get_key("random")
 
     assert_equal 1, @cipher.a
     assert_equal 12, @cipher.b
@@ -82,9 +83,10 @@ class CipherTest < Minitest::Test
   def test_it_can_translate_the_given_text
     Cipher.stubs(:get_date_square).returns("6400")
     @cipher.calculator.stubs(:get_key).returns("01234")
-    @cipher.get_key
+    @cipher.get_key("random")
     @cipher.get_offsets
+    @cipher.encipher
 
-    assert_equal "zqiwsu", @cipher.encipher
+    assert_equal "zqiwsu", @cipher.final_text
   end
 end
