@@ -1,4 +1,3 @@
-require "date"
 require "./lib/cipher"
 require "./lib/calculator"
 require "./lib/translator"
