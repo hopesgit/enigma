@@ -26,7 +26,9 @@ class Translator
   def rotator(input, a, b, c, d)
     input.map do |index, char|
       alpha_index = alphabet.find_index(char)
-      if index % 4 == 0
+      if alpha_index.nil?
+        char
+      elsif index % 4 == 0
         alphabet.rotate(a)[alpha_index]
       elsif index % 4 == 1
         alphabet.rotate(b)[alpha_index]
