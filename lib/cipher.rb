@@ -3,10 +3,11 @@ require "date"
 class Cipher
   attr_reader :calculator, :a, :b, :c, :d
 
-  def initialize(text)
+  def initialize(text, key = "random", date = "today")
     @text = text
     @calculator = Calculator.new
-    @key = get_key
+    @key = get_key(key)
+    @date = get_date(date)
     @a = nil
     @b = nil
     @c = nil
@@ -17,21 +18,34 @@ class Cipher
     @text.downcase.split("")
   end
 
-  def get_key
-    base = @calculator.get_key
-    @a = base[0..1].to_i
-    @b = base[1..2].to_i
-    @c = base[2..3].to_i
-    @d = base[3..4].to_i
-    base
+  def get_key(key)
+    if key == "random"
+      base = @calculator.get_key
+      assign_keys(base)
+      base
+    else
+      assign_keys(key)
+      key
+    end
   end
 
-  def get_date
-    Date.today.strftime("%d%m%y").to_i
+  def assign_keys(root)
+    @a = root[0..1].to_i
+    @b = root[1..2].to_i
+    @c = root[2..3].to_i
+    @d = root[3..4].to_i
+  end
+
+  def get_date(date)
+    if date == "today"
+      Date.today.strftime("%d%m%y").to_i
+    else
+      date.to_i
+    end
   end
 
   def get_date_square
-    square = @calculator.square_it(get_date)
+    square = @calculator.square_it(@date)
     square.to_s[-4..-1]
   end
 
@@ -46,5 +60,10 @@ class Cipher
   def encipher
     caesar = Translator.new(text)
     caesar.encipher(@a, @b, @c, @d)
+  end
+
+  def process
+    get_offsets
+    encipher
   end
 end

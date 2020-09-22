@@ -13,23 +13,38 @@ class CipherTest < Minitest::Test
     assert_equal ["s", "a", "m", "p", "l", "e"], @cipher.text
   end
 
-  def test_it_can_get_a_random_base_key
-    assert_equal 5, @cipher.get_key.length
+  def test_it_can_get_a_base_key
+    assert_equal 5, @cipher.get_key("random").length
+    assert_equal "07152", @cipher.get_key("07152")
   end
 
-  def test_it_can_get_keys_from_base
+  def test_it_can_get_keys_from_random_base
     assert_nil @cipher.a
     assert_nil @cipher.b
     assert_nil @cipher.c
     assert_nil @cipher.d
 
     @cipher.calculator.stubs(:get_key).returns("01234")
-    @cipher.get_key
+    @cipher.get_key("random")
 
     assert_equal 1, @cipher.a
     assert_equal 12, @cipher.b
     assert_equal 23, @cipher.c
     assert_equal 34, @cipher.d
+  end
+
+  def test_it_can_get_keys_from_given_base
+    assert_nil @cipher.a
+    assert_nil @cipher.b
+    assert_nil @cipher.c
+    assert_nil @cipher.d
+
+    @cipher.get_key("51369")
+
+    assert_equal 51, @cipher.a
+    assert_equal 13, @cipher.b
+    assert_equal 36, @cipher.c
+    assert_equal 69, @cipher.d
   end
 
   def test_it_can_get_date
